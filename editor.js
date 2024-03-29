@@ -46,7 +46,10 @@ function setup () {
   faceSelector.option('1');
   faceSelector.option('2');
   faceSelector.option('3');
-  faceSelector.value('1');
+
+  faceSelector.option('My face');
+
+  faceSelector.value('My face');
   faceSelector.parent('selector1Container');
 }
 
@@ -97,6 +100,10 @@ function draw () {
   }
   if (mode == '3') {
     simplePurpleFace();
+  }
+
+  if (mode == 'My face') {
+    basicHumanFace();
   }
 
   pop();

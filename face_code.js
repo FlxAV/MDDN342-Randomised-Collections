@@ -79,3 +79,36 @@ function blockyFace(thinness_value) {
   ellipse(-2, -4, 1);
   ellipse( 2, -4, 1);
 }
+
+
+
+let numPoints = 300; // Number of points on the circumference
+let circleRadius = 4; // Radius of the circle
+let noiseScale = 0.1; // Scale factor for Perlin noise
+let noiseStrength = 2; // Strength of the noise
+
+function basicHumanFace() {
+  // Draw circle
+  fill(255);
+  beginShape();
+  for (let i = 0; i < numPoints; i++) {
+    // Calculate angle for this point
+    let angle = map(i, 0, numPoints, 0, TWO_PI);
+    // Calculate position on the circumference
+    let x = cos(angle) * circleRadius;
+    let y = sin(angle) * circleRadius;
+    // Apply Perlin noise to create oscillations
+    let noiseValue = noise(x * noiseScale, y * noiseScale);
+    let noiseOffset = map(noiseValue, 0, 1, -noiseStrength, noiseStrength);
+    // Apply noise offset to position
+    x += noiseOffset;
+    y += noiseOffset;
+    // Ensure the shape stays within the bounding box
+    x = constrain(x, -10 + circleRadius, 10 - circleRadius);
+    y = constrain(y, -10 + circleRadius, 10 - circleRadius);
+    // Draw vertex
+    vertex(x, y);
+  }
+  endShape(CLOSE);
+}
+
