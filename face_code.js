@@ -87,8 +87,8 @@ let circleRadius = 4; // Radius of the circle
 let noiseScale = 0.1; // Scale factor for Perlin noise
 let noiseStrength = 2; // Strength of the noise
 
-function basicHumanFace() {
-  // Draw circle
+function basicHumanFace(eye_loc, eye_loc2) {
+  // Draw the base white circle
   fill(255);
   beginShape();
   for (let i = 0; i < numPoints; i++) {
@@ -110,5 +110,14 @@ function basicHumanFace() {
     vertex(x, y);
   }
   endShape(CLOSE);
+
+  let smallerCircleRadius = circleRadius * 0.1; // Adjust size of smaller circles as needed
+  // Draw two smaller black circles inside the white blob at random positions
+  fill(0); // Set fill color to black
+  ellipse(eye_loc, 0, smallerCircleRadius * 2); // Draw first smaller circle at a random position
+  ellipse(0, eye_loc2, smallerCircleRadius * 2); // Draw second smaller circle at another random position
+
+
+
 }
 

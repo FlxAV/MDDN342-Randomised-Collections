@@ -103,7 +103,11 @@ function draw () {
   }
 
   if (mode == 'My face') {
-    basicHumanFace();
+
+   let eye_loc = map(s1, 0, 100, -10, 10);
+   let eye_loc2 = map(s2, 0, 100, -10, 10);
+
+    basicHumanFace(eye_loc, eye_loc2); // Draw the blob shape once  
   }
 
   pop();
