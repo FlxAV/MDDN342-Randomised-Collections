@@ -5,7 +5,7 @@
 const canvasWidth = 960;
 const canvasHeight = 500;
 const bg_color = [71, 222, 219];
-let slider1, slider2, slider3, slider4, slider5;
+let  slider1, slider2, slider3, slider4, slider5;
 let slider6, slider7, slider8, slider9, slider10;
 let faceSelector;
 let faceGuideCheckbox;
@@ -51,6 +51,10 @@ function setup () {
 
   faceSelector.value('My face');
   faceSelector.parent('selector1Container');
+
+   
+
+
 }
 
 
@@ -104,10 +108,14 @@ function draw () {
 
   if (mode == 'My face') {
 
-   let eye_loc = map(s1, 0, 100, -10, 10);
-   let eye_loc2 = map(s2, 0, 100, -10, 10);
+    
+    
+   let smallerCircleX1 = map(s1, 0, 100, -10, 10);
+   let smallerCircleY1 = map(s2, 0, 100, -10, 10);
+   let smallerCircleX2 = map(s3, 0, 100, -10, 10);
+   let smallerCircleY2 = map(s4, 0, 100, -10, 10);
 
-    basicHumanFace(eye_loc, eye_loc2); // Draw the blob shape once  
+    basicHumanFace(smallerCircleX1, smallerCircleY1, smallerCircleX2, smallerCircleY2); // Draw the blob shape once  
   }
 
   pop();

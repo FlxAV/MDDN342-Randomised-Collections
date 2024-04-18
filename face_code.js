@@ -83,11 +83,17 @@ function blockyFace(thinness_value) {
 
 
 let numPoints = 300; // Number of points on the circumference
-let circleRadius = 4; // Radius of the circle
+let circleRadius = 6; // Radius of the circle
 let noiseScale = 0.1; // Scale factor for Perlin noise
 let noiseStrength = 2; // Strength of the noise
 
-function basicHumanFace(eye_loc, eye_loc2) {
+function basicHumanFace(smallerCircleX1, smallerCircleY1, smallerCircleX2, smallerCircleY2) {
+  let numPoints = 300; // Number of points on the circumference
+  let circleRadius = 8; // Increase the radius of the circle
+  let noiseScale = 0.1; // Scale factor for Perlin noise
+  let noiseStrength = 2; // Strength of the noise
+  let boundBox = 10;
+
   // Draw the base white circle
   fill(255);
   beginShape();
@@ -104,20 +110,30 @@ function basicHumanFace(eye_loc, eye_loc2) {
     x += noiseOffset;
     y += noiseOffset;
     // Ensure the shape stays within the bounding box
-    x = constrain(x, -10 + circleRadius, 10 - circleRadius);
-    y = constrain(y, -10 + circleRadius, 10 - circleRadius);
+    x = constrain(x, -boundBox, boundBox); // Adjusted to use circleRadius
+    y = constrain(y, -boundBox, boundBox); // Adjusted to use circleRadius
     // Draw vertex
     vertex(x, y);
   }
   endShape(CLOSE);
 
+  // let smallerCircleRadius = circleRadius * 0.1; // Adjust size of smaller circles as needed
+  // // Draw two smaller black circles inside the white blob at random positions
+  // fill(0); // Set fill color to black
+  // ellipse(eye_loc, 0, smallerCircleRadius * 2); // Draw first smaller circle at a random position
+  // ellipse(0, eye_loc2, smallerCircleRadius * 2); // Draw second smaller circle at another random position
+
+  // // Generate random coordinates within the circle's radius
+  // let smallerCircleX1 = random(-circleRadius + 2, circleRadius - 2);
+  // let smallerCircleY1 = random(-circleRadius + 2, circleRadius - 2);
+  // let smallerCircleX2 = random(-circleRadius + 2, circleRadius - 2);
+  // let smallerCircleY2 = random(-circleRadius + 2, circleRadius - 2);
+
   let smallerCircleRadius = circleRadius * 0.1; // Adjust size of smaller circles as needed
   // Draw two smaller black circles inside the white blob at random positions
   fill(0); // Set fill color to black
-  ellipse(eye_loc, 0, smallerCircleRadius * 2); // Draw first smaller circle at a random position
-  ellipse(0, eye_loc2, smallerCircleRadius * 2); // Draw second smaller circle at another random position
-
-
-
+  ellipse(smallerCircleX1, smallerCircleY1, smallerCircleRadius * 2); // Draw first smaller circle at a random position
+  ellipse(smallerCircleX2, smallerCircleY2, smallerCircleRadius * 2); // Draw second smaller circle at another random position
+  
 }
 
