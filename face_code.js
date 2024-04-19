@@ -123,35 +123,74 @@ function blockyFace(thinness_value) {
 
 var blobObj = []; // array of objects that holds blob attributes
 
-
-function basicHumanFace() {
+function kodamoHead(shape) {
   let rad = 7; // radius of the circular path
   let res = 10; // the number of points
   let angle = 360 / res; // angular distance between each point
+  let randomGap = 1;
   angleMode(DEGREES); // enable the Degree mode not to make calculations easier.
 
-    // Clear the array to store new blob attributes
-    blobObj = [];
-  //console.log("In Human Func");
 
-  push(); // It's a good practice to use push and pop whenevewer you translate screen coordinates
-  noFill(); // Do not fill the shape with color. Just draw strokes
-  beginShape(); // start to draw custom shape
+  // Clear the array to store new blob attributes
+ // blobObj = [];
+
+  // Modify the initial shape based on the value of the 'shape' parameter
+  if (shape === 0) {
+    fill(0,0,255);
+    // Circle
+    for (var i = 0; i < res; i++) {
+      rad += random(-randomGap, randomGap);
+      blobObj.push({
+        "rad": rad,
+        "x": rad * cos(angle * i),
+        "y": rad * sin(angle * i)
+      });
+    }
+  } else if (shape === 1) {
+    fill(0,255, 0);
+    // Horizontal oval
+    for (var i = 0; i < res; i++) {
+      rad += random(-randomGap, randomGap);
+      blobObj.push({
+        "rad": rad,
+        "x": rad * cos(angle * i),
+        "y": rad * sin(angle * i) * 0.6
+      });
+    }
+  } else if (shape === 2) {
+    fill(255, 0, 0);
+    // Vertical oval
+    for (var i = 0; i < res; i++) {
+      rad += random(-randomGap, randomGap);
+       blobObj.push({
+        "rad": rad,
+        "x": rad * cos(angle * i)* 0.6,
+        "y": rad * sin(angle * i)
+      });
+    }
+  }
+
+   // Generate random RGB values within the specified range
+   let r = random(220, 255); // Random red value between 220 and 255
+   let g = random(240, 255); // Random green value between 240 and 255
+   let b = random(230, 255); // Random blue value between 230 and 255
+ 
+   // Fill the shape with the random color
+   //fill(r, g, b);
+
+  // Draw the shape
+  push();
+  beginShape();
   for (var i = 0; i < res; i++) {
-   rad += random(-1.4,1.4); // increase or decrease the radius of the blob randomly
-   // store each blob's radius, x and y coordinates into the array
-   blobObj.push({
-    "rad": rad,
-    "x": rad * cos(angle * i),
-    "y": rad * sin(angle * i)
-   });
-   //circle(blobObj[i].x, blobObj[i].y, 0.5);
-   curveVertex(blobObj[i].x, blobObj[i].y); // add points to the custom shape
+    curveVertex(blobObj[i].x, blobObj[i].y);
   }
   curveVertex(blobObj[0].x, blobObj[0].y);
   curveVertex(blobObj[1].x, blobObj[1].y);
   curveVertex(blobObj[2].x, blobObj[2].y);
   endShape(); // we finish adding points
   pop();
-
 }
+
+
+
+

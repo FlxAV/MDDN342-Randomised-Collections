@@ -107,8 +107,8 @@ function draw () {
   }
 
   if (mode == 'My face') {
-
-    basicHumanFace(); // Draw the blob shape once  
+    let shape = 0;
+    kodamoHead(shape); // Draw the blob shape once  
   }
 
   pop();
