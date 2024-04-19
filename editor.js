@@ -39,7 +39,7 @@ function setup () {
   slider9.parent('slider9Container');
   slider10.parent('slider10Container');
 
-  faceGuideCheckbox = createCheckbox('', false);
+  faceGuideCheckbox = createCheckbox('', true);
   faceGuideCheckbox.parent('checkbox1Container');
 
   faceSelector = createSelect();
@@ -108,14 +108,7 @@ function draw () {
 
   if (mode == 'My face') {
 
-    
-    
-   let smallerCircleX1 = map(s1, 0, 100, -10, 10);
-   let smallerCircleY1 = map(s2, 0, 100, -10, 10);
-   let smallerCircleX2 = map(s3, 0, 100, -10, 10);
-   let smallerCircleY2 = map(s4, 0, 100, -10, 10);
-
-    basicHumanFace(smallerCircleX1, smallerCircleY1, smallerCircleX2, smallerCircleY2); // Draw the blob shape once  
+    basicHumanFace(); // Draw the blob shape once  
   }
 
   pop();

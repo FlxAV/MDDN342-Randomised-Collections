@@ -82,58 +82,76 @@ function blockyFace(thinness_value) {
 
 
 
-let numPoints = 300; // Number of points on the circumference
-let circleRadius = 6; // Radius of the circle
-let noiseScale = 0.1; // Scale factor for Perlin noise
-let noiseStrength = 2; // Strength of the noise
+// class Blob {
+//   constructor(x, y, rad) {
+ 
+//    this.x = x;
+//    this.y = y;
+//    this.rad = rad;
+//    this.szDelta = this.rad * 0.35; // Set the displace amount 35% of the radius
+//    this.blobObj = [];
+   
+//   // constants
+//   this.res = 10; // the number of points 
+//   this.angle = 360 / this.res; // angular distance between each point
+//   }
+ 
+//   display() {
+//    push(); // It's a good practice to use push and pop whenevewer you translate screen coordinates
+//    noFill(); // Do not fill the shape with color. Just draw strokes
+//    translate(this.x, this.y); // translate the screen coordinate from top-left to middle of the canvas
+//    beginShape(); // start to draw custom shape
+//    for (var i = 0; i < this.res; i++) {
+//     var randRad = min(this.rad, this.rad+random(-this.szDelta, this.szDelta));
+//     this.blobObj.push({
+//      "rad": randRad,
+//      "x": randRad * cos(this.angle * i),
+//      "y": randRad * sin(this.angle * i)
+//     });
+//     circle(this.blobObj[i].x, this.blobObj[i].y, 5);
+//     curveVertex(this.blobObj[i].x, this.blobObj[i].y); // add points to the custom shape
+//    }
+//    curveVertex(this.blobObj[0].x, this.blobObj[0].y);
+//    curveVertex(this.blobObj[1].x, this.blobObj[1].y);
+//    curveVertex(this.blobObj[2].x, this.blobObj[2].y);
+//    endShape(); // we finish adding points
+//    pop();
+//   }
+ 
+//  }
 
-function basicHumanFace(smallerCircleX1, smallerCircleY1, smallerCircleX2, smallerCircleY2) {
-  let numPoints = 300; // Number of points on the circumference
-  let circleRadius = 8; // Increase the radius of the circle
-  let noiseScale = 0.1; // Scale factor for Perlin noise
-  let noiseStrength = 2; // Strength of the noise
-  let boundBox = 10;
 
-  // Draw the base white circle
-  fill(255);
-  beginShape();
-  for (let i = 0; i < numPoints; i++) {
-    // Calculate angle for this point
-    let angle = map(i, 0, numPoints, 0, TWO_PI);
-    // Calculate position on the circumference
-    let x = cos(angle) * circleRadius;
-    let y = sin(angle) * circleRadius;
-    // Apply Perlin noise to create oscillations
-    let noiseValue = noise(x * noiseScale, y * noiseScale);
-    let noiseOffset = map(noiseValue, 0, 1, -noiseStrength, noiseStrength);
-    // Apply noise offset to position
-    x += noiseOffset;
-    y += noiseOffset;
-    // Ensure the shape stays within the bounding box
-    x = constrain(x, -boundBox, boundBox); // Adjusted to use circleRadius
-    y = constrain(y, -boundBox, boundBox); // Adjusted to use circleRadius
-    // Draw vertex
-    vertex(x, y);
+var blobObj = []; // array of objects that holds blob attributes
+
+
+function basicHumanFace() {
+  let rad = 7; // radius of the circular path
+  let res = 10; // the number of points
+  let angle = 360 / res; // angular distance between each point
+  angleMode(DEGREES); // enable the Degree mode not to make calculations easier.
+
+    // Clear the array to store new blob attributes
+    blobObj = [];
+  //console.log("In Human Func");
+
+  push(); // It's a good practice to use push and pop whenevewer you translate screen coordinates
+  noFill(); // Do not fill the shape with color. Just draw strokes
+  beginShape(); // start to draw custom shape
+  for (var i = 0; i < res; i++) {
+   rad += random(-1.4,1.4); // increase or decrease the radius of the blob randomly
+   // store each blob's radius, x and y coordinates into the array
+   blobObj.push({
+    "rad": rad,
+    "x": rad * cos(angle * i),
+    "y": rad * sin(angle * i)
+   });
+   //circle(blobObj[i].x, blobObj[i].y, 0.5);
+   curveVertex(blobObj[i].x, blobObj[i].y); // add points to the custom shape
   }
-  endShape(CLOSE);
+  curveVertex(blobObj[0].x, blobObj[0].y);
+  curveVertex(blobObj[1].x, blobObj[1].y);
+  curveVertex(blobObj[2].x, blobObj[2].y);
+  endShape(); // we finish adding points
+  pop();
 
-  // let smallerCircleRadius = circleRadius * 0.1; // Adjust size of smaller circles as needed
-  // // Draw two smaller black circles inside the white blob at random positions
-  // fill(0); // Set fill color to black
-  // ellipse(eye_loc, 0, smallerCircleRadius * 2); // Draw first smaller circle at a random position
-  // ellipse(0, eye_loc2, smallerCircleRadius * 2); // Draw second smaller circle at another random position
-
-  // // Generate random coordinates within the circle's radius
-  // let smallerCircleX1 = random(-circleRadius + 2, circleRadius - 2);
-  // let smallerCircleY1 = random(-circleRadius + 2, circleRadius - 2);
-  // let smallerCircleX2 = random(-circleRadius + 2, circleRadius - 2);
-  // let smallerCircleY2 = random(-circleRadius + 2, circleRadius - 2);
-
-  let smallerCircleRadius = circleRadius * 0.1; // Adjust size of smaller circles as needed
-  // Draw two smaller black circles inside the white blob at random positions
-  fill(0); // Set fill color to black
-  ellipse(smallerCircleX1, smallerCircleY1, smallerCircleRadius * 2); // Draw first smaller circle at a random position
-  ellipse(smallerCircleX2, smallerCircleY2, smallerCircleRadius * 2); // Draw second smaller circle at another random position
-  
 }
-
