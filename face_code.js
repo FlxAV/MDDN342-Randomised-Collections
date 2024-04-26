@@ -123,7 +123,7 @@ function blockyFace(thinness_value) {
 
 var blobObj = []; // array of objects that holds blob attributes
 
-function kodamoHead(shape) {
+function kodamoHead(shape, eyeR, eyeL, eyeSize1, eyeSize2, mouthWidth1, mouthWidth2) {
   let rad = 7; // radius of the circular path
   let res = 10; // the number of points
   let angle = 360 / res; // angular distance between each point
@@ -132,7 +132,7 @@ function kodamoHead(shape) {
 
 
   // Clear the array to store new blob attributes
- // blobObj = [];
+  blobObj = [];
 
   // Modify the initial shape based on the value of the 'shape' parameter
   if (shape === 0) {
@@ -153,8 +153,8 @@ function kodamoHead(shape) {
       rad += random(-randomGap, randomGap);
       blobObj.push({
         "rad": rad,
-        "x": rad * cos(angle * i),
-        "y": rad * sin(angle * i) * 0.6
+        "x": rad * cos(angle * i) * 1.2 ,
+        "y": rad * sin(angle * i) * 0.9
       });
     }
   } else if (shape === 2) {
@@ -164,22 +164,26 @@ function kodamoHead(shape) {
       rad += random(-randomGap, randomGap);
        blobObj.push({
         "rad": rad,
-        "x": rad * cos(angle * i)* 0.6,
-        "y": rad * sin(angle * i)
+        "x": rad * cos(angle * i)* 0.9,
+        "y": rad * sin(angle * i) * 1.2
       });
     }
   }
-
+   
    // Generate random RGB values within the specified range
-   let r = random(220, 255); // Random red value between 220 and 255
-   let g = random(240, 255); // Random green value between 240 and 255
-   let b = random(230, 255); // Random blue value between 230 and 255
+   let r = random(235, 255); // Random red value between 220 and 255
+   let g = random(245, 255); // Random green value between 240 and 255
+   let b = random(250, 255); // Random blue value between 230 and 255
  
    // Fill the shape with the random color
-   //fill(r, g, b);
+  fill(b, g, r);
+
+  //editor color - remove if not editing
+  //fill(255);
 
   // Draw the shape
   push();
+  strokeWeight(0.3);
   beginShape();
   for (var i = 0; i < res; i++) {
     curveVertex(blobObj[i].x, blobObj[i].y);
@@ -188,7 +192,93 @@ function kodamoHead(shape) {
   curveVertex(blobObj[1].x, blobObj[1].y);
   curveVertex(blobObj[2].x, blobObj[2].y);
   endShape(); // we finish adding points
+
+//to view the points on the blob
+  for(let i = 0; i<10;i++){
+   //ellipse(blobObj[i].x, blobObj[i].y, 1, 1);
+  }
+  // fill(255,0,0);
+  // ellipse(blobObj[3].x, blobObj[3].y, 1, 1);
+
+// Adjust the coordinates of the eyes to center them around (0, 0)
+let xCord1 = (blobObj[eyeR].x) - (blobObj[eyeR].x)/2;
+let yCord1 = (blobObj[eyeR].y) - (blobObj[eyeR].y)/2;
+let xCord2 = (blobObj[eyeL].x) - (blobObj[eyeL].x)/2;
+let yCord2 = (blobObj[eyeL].y) - (blobObj[eyeL].y)/2;
+
+//console.log("X1: "+xCord1+" || Y1: "+ yCord1+" || X2: "+xCord2+" || Y2: "+yCord2);
+
+fill(0);
+noStroke();
+ellipse(xCord1, yCord1, eyeSize1); // Left eye
+//fill(255,0,0);
+ellipse(xCord2, yCord2, eyeSize2); // Right eye
+
+
+  // Draw smile
+ 
+
+  let lowerEyeCord;
+  let lowerEyeSize;
+  if(yCord1<yCord2){
+    lowerEyeCord = yCord2;
+    lowerEyeSize = eyeSize2;
+  }else{
+    lowerEyeCord = yCord1;
+    lowerEyeSize = eyeSize1;
+  }
+
+  //console.log("YCord1 : "+yCord1+" || YCord2 : "+yCord2 + " || Lowere Eye: "+lowerEyeCord);
+
+  let chinPoint = blobObj[3].y;
+
+  let mouthWidth = lowerEyeSize * 2;
+  let mouthHeight = lowerEyeSize * 0.5;
+  let mouthX = (xCord1 + xCord2) / 2;
+  let mouthY = lowerEyeCord + lowerEyeSize * 0.7;
+
+  let widthFactor1 = mouthWidth1;
+  let widthFactor2 = mouthWidth2;
+
+   // Check if the mouth would be drawn below the chin point
+   if (mouthY + mouthHeight * widthFactor1 > chinPoint) {
+    // Adjust the mouth y-coordinate to be above the chin point
+    mouthY = chinPoint - mouthHeight * widthFactor1 * 2;
+  }
+  // Draw bezier curves for smile
+  beginShape();
+  // First curve
+  let x1 = mouthX - mouthWidth * 0.5;
+  let y1 = mouthY + mouthHeight * widthFactor1;
+  let x2 = mouthX - mouthWidth * 0.25;
+  let y2 = mouthY + mouthHeight * widthFactor2;
+  let x3 = mouthX + mouthWidth * 0.25;
+  let y3 = mouthY + mouthHeight * widthFactor2;
+  let x4 = mouthX + mouthWidth * 0.5;
+  let y4 = mouthY + mouthHeight * widthFactor1;
+  bezier(x1, y1, x2, y2, x3, y3, x4, y4);
+
+  // Second curve
+  let x5 = mouthX + mouthWidth * 0.5;
+  let y5 = mouthY + mouthHeight * widthFactor1;
+  let x6 = mouthX + mouthWidth * 0.25;
+  let y6 = mouthY + mouthHeight * widthFactor2;
+  let x7 = mouthX - mouthWidth * 0.25;
+  let y7 = mouthY + mouthHeight * widthFactor2;
+  let x8 = mouthX - mouthWidth * 0.5;
+  let y8 = mouthY + mouthHeight * widthFactor1;
+  bezier(x5, y5, x6, y6, x7, y7, x8, y8);
+  endShape();
+
+
   pop();
+}
+
+function kodamaBody(){
+
+
+  
+
 }
 
 

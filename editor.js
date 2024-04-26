@@ -107,8 +107,19 @@ function draw () {
   }
 
   if (mode == 'My face') {
-    let shape = 0;
-    kodamoHead(shape); // Draw the blob shape once  
+    let shape = floor(random(3));
+  
+    let eyeR = 0;
+    let eyeL = 6;
+
+    let eyeSize1 = map(s1, 0, 100, 1, 3);
+    let eyeSize2 = map(s2, 0, 100, 1, 3);
+
+    let mouthWidth1 = map(s3, 0, 100, 0.5, 2);
+    let mouthWidth2 = map(s4, 0, 100, 0.8, 2);
+
+
+    kodamoHead(shape, eyeR, eyeL, eyeSize1, eyeSize2, mouthWidth1, mouthWidth2); // Draw the blob shape once  
   }
 
   pop();
