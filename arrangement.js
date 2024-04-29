@@ -52,7 +52,7 @@ function draw () {
   
   //Draw thre Leafy background
   let leafSpacing = 40; // Adjust spacing between leaves as needed
-  for(let i = 0; i < width; i += leafSpacing) {
+  for(let i = 0; i <= width; i += leafSpacing) {
     for(let j = 0; j <= height; j += leafSpacing) {
       push(); 
       translate(i, j); // Move to the position where the leaf will be drawn
@@ -64,12 +64,12 @@ function draw () {
 
 
     // Define parameters for the crowd
-    let crowdDensity = 0.25; // Adjust density of the crowd
-    let crowdScale = 100; // Adjust the scale of the noise map
+    let crowdDensity = 0.5; // Adjust density of the crowd
+    let crowdScale = 10; // Adjust the scale of the noise map
     
     // Draw the crowd of heads
-    for (let i = 0; i < canvasWidth; i += canvasWidth/50) {
-      for (let j = 0; j < canvasHeight; j += canvasHeight/25) {
+    for (let i = 0; i < canvasWidth; i += canvasWidth/10) {
+      for (let j = 0; j < canvasHeight; j += canvasHeight/10) {
         // Use noise to determine whether to draw a head at this position
         let noiseValue = noise(i / crowdScale, j / crowdScale);
         if (noiseValue < crowdDensity) {

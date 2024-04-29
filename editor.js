@@ -118,8 +118,10 @@ function draw () {
     let mouthWidth1 = map(s3, 0, 100, 0.5, 2);
     let mouthWidth2 = map(s4, 0, 100, 0.8, 2);
 
+    kodamaBody();
 
-    kodamoHead(shape, eyeR, eyeL, eyeSize1, eyeSize2, mouthWidth1, mouthWidth2); // Draw the blob shape once  
+    //kodamoHead(shape, eyeR, eyeL, eyeSize1, eyeSize2, mouthWidth1, mouthWidth2); // Draw the blob shape once  
+
   }
 
   pop();

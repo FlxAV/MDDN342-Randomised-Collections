@@ -82,43 +82,6 @@ function blockyFace(thinness_value) {
 
 
 
-// class Blob {
-//   constructor(x, y, rad) {
- 
-//    this.x = x;
-//    this.y = y;
-//    this.rad = rad;
-//    this.szDelta = this.rad * 0.35; // Set the displace amount 35% of the radius
-//    this.blobObj = [];
-   
-//   // constants
-//   this.res = 10; // the number of points 
-//   this.angle = 360 / this.res; // angular distance between each point
-//   }
- 
-//   display() {
-//    push(); // It's a good practice to use push and pop whenevewer you translate screen coordinates
-//    noFill(); // Do not fill the shape with color. Just draw strokes
-//    translate(this.x, this.y); // translate the screen coordinate from top-left to middle of the canvas
-//    beginShape(); // start to draw custom shape
-//    for (var i = 0; i < this.res; i++) {
-//     var randRad = min(this.rad, this.rad+random(-this.szDelta, this.szDelta));
-//     this.blobObj.push({
-//      "rad": randRad,
-//      "x": randRad * cos(this.angle * i),
-//      "y": randRad * sin(this.angle * i)
-//     });
-//     circle(this.blobObj[i].x, this.blobObj[i].y, 5);
-//     curveVertex(this.blobObj[i].x, this.blobObj[i].y); // add points to the custom shape
-//    }
-//    curveVertex(this.blobObj[0].x, this.blobObj[0].y);
-//    curveVertex(this.blobObj[1].x, this.blobObj[1].y);
-//    curveVertex(this.blobObj[2].x, this.blobObj[2].y);
-//    endShape(); // we finish adding points
-//    pop();
-//   }
- 
-//  }
 
 
 var blobObj = []; // array of objects that holds blob attributes
@@ -130,6 +93,7 @@ function kodamoHead(shape, eyeR, eyeL, eyeSize1, eyeSize2, mouthWidth1, mouthWid
   let randomGap = 1;
   angleMode(DEGREES); // enable the Degree mode not to make calculations easier.
 
+  kodamaBody();
 
   // Clear the array to store new blob attributes
   blobObj = [];
@@ -179,7 +143,7 @@ function kodamoHead(shape, eyeR, eyeL, eyeSize1, eyeSize2, mouthWidth1, mouthWid
   fill(b, g, r);
 
   //editor color - remove if not editing
-  //fill(255);
+  fill(255);
 
   // Draw the shape
   push();
@@ -272,15 +236,50 @@ ellipse(xCord2, yCord2, eyeSize2); // Right eye
 
 
   pop();
+
 }
+
+
+
 
 function kodamaBody(){
+  angleMode(DEGREES); // enable the Degree mode not to make calculations easier.
 
+  strokeWeight(0.7);
+  push();
+  translate(0,10);
+  scale(0.5);
+   //Legs
+   ellipse(-3,12,5,12);
+   ellipse(3,12,5,12);
+ 
+   //Arms
+   push();
+   rotate(20);
+   translate(-8,-1);
+   ellipse(0,0,5,15);
+   pop();
+ 
+   push();
+   rotate(-20);
+   translate(8,-1);
+   ellipse(0,0,5,15);
+   pop();
 
-  
+  // Draw pear shape
+  beginShape();
+  curveVertex(0, -10);    // Top point of the pear
+  curveVertex(-3, -9);    // Right upper curve
+  curveVertex(-6, 0);     // Right middle curve
+  curveVertex(-8, 7);     // Right lower curve
+  curveVertex(0, 12);     // Bottom point of the pear
+  curveVertex(8, 7);      // Left lower curve
+  curveVertex(6, 0);      // Left middle curve
+  curveVertex(3, -9);     // Left upper curve
+  endShape(CLOSE);
+
+ pop();
+
 
 }
-
-
-
 
