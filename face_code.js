@@ -92,15 +92,25 @@ function kodamoHead(shape, eyeR, eyeL, eyeSize1, eyeSize2, mouthWidth1, mouthWid
   let angle = 360 / res; // angular distance between each point
   let randomGap = 1;
   angleMode(DEGREES); // enable the Degree mode not to make calculations easier.
+  // Generate random RGB values within the specified range
+  let r = random(235, 255); // Random red value between 220 and 255
+  let g = random(245, 255); // Random green value between 240 and 255
+  let b = random(250, 255); // Random blue value between 230 and 255
+ let kodamaColor = [b, g, r];
+  // Fill the shape with the random color
+ fill(kodamaColor);
 
-  kodamaBody();
+ //editor color - UNCOMENT IF USING THE EDITOR
+ //fill(255);
 
-  // Clear the array to store new blob attributes
+  kodamaBody(kodamaColor);
+
+  // Clear the array to store new blob attributes  COMMENT OUT WHEN USING EDITOR
   blobObj = [];
 
   // Modify the initial shape based on the value of the 'shape' parameter
   if (shape === 0) {
-    fill(0,0,255);
+    //fill(0,0,255);
     // Circle
     for (var i = 0; i < res; i++) {
       rad += random(-randomGap, randomGap);
@@ -111,7 +121,7 @@ function kodamoHead(shape, eyeR, eyeL, eyeSize1, eyeSize2, mouthWidth1, mouthWid
       });
     }
   } else if (shape === 1) {
-    fill(0,255, 0);
+    //fill(0,255, 0);
     // Horizontal oval
     for (var i = 0; i < res; i++) {
       rad += random(-randomGap, randomGap);
@@ -122,7 +132,7 @@ function kodamoHead(shape, eyeR, eyeL, eyeSize1, eyeSize2, mouthWidth1, mouthWid
       });
     }
   } else if (shape === 2) {
-    fill(255, 0, 0);
+    //fill(255, 0, 0);
     // Vertical oval
     for (var i = 0; i < res; i++) {
       rad += random(-randomGap, randomGap);
@@ -134,16 +144,7 @@ function kodamoHead(shape, eyeR, eyeL, eyeSize1, eyeSize2, mouthWidth1, mouthWid
     }
   }
    
-   // Generate random RGB values within the specified range
-   let r = random(235, 255); // Random red value between 220 and 255
-   let g = random(245, 255); // Random green value between 240 and 255
-   let b = random(250, 255); // Random blue value between 230 and 255
- 
-   // Fill the shape with the random color
-  fill(b, g, r);
-
-  //editor color - remove if not editing
-  fill(255);
+   
 
   // Draw the shape
   push();
@@ -244,7 +245,6 @@ ellipse(xCord2, yCord2, eyeSize2); // Right eye
 
 function kodamaBody(){
   angleMode(DEGREES); // enable the Degree mode not to make calculations easier.
-
   strokeWeight(0.7);
   push();
   translate(0,10);
