@@ -94,11 +94,26 @@ function kodamoHead(shape, eyeR, eyeL, eyeSize1, eyeSize2, mouthWidth1, mouthWid
   angleMode(DEGREES); // enable the Degree mode not to make calculations easier.
   // Generate random RGB values within the specified range
   let r = random(235, 255); // Random red value between 220 and 255
-  let g = random(245, 255); // Random green value between 240 and 255
-  let b = random(250, 255); // Random blue value between 230 and 255
- let kodamaColor = [b, g, r];
+  let g = random(250, 255); // Random green value between 240 and 255
+  let b = random(245, 255); // Random blue value between 230 and 255
+  
+  let a = 255;
+  
+  let prob1 = floor(random(100));
+  let prob2 = floor(random(100));
+
+  if(prob2<30){
+    a = random(200, 255);
+  }
+  
+  let kodamaColor = [b, g, r, a];
+  if(prob1 === 1){
+    kodamaColor = [ 255, 204, 255, a];
+  }
+
+  
   // Fill the shape with the random color
- fill(kodamaColor);
+  fill(kodamaColor);
 
  //editor color - UNCOMENT IF USING THE EDITOR
  //fill(255);
@@ -160,10 +175,12 @@ function kodamoHead(shape, eyeR, eyeL, eyeSize1, eyeSize2, mouthWidth1, mouthWid
 
 //to view the points on the blob
   for(let i = 0; i<10;i++){
-   //ellipse(blobObj[i].x, blobObj[i].y, 1, 1);
+  // ellipse(blobObj[i].x, blobObj[i].y, 1, 1);
   }
-  // fill(255,0,0);
-  // ellipse(blobObj[3].x, blobObj[3].y, 1, 1);
+
+ ellipse(blobObj[2].x, blobObj[2].y, 1, 1);
+  fill(255,0,0);
+  ellipse(blobObj[3].x, blobObj[3].y, 1, 1);
 
 // Adjust the coordinates of the eyes to center them around (0, 0)
 let xCord1 = (blobObj[eyeR].x) - (blobObj[eyeR].x)/2;
@@ -270,11 +287,11 @@ function kodamaBody(){
   beginShape();
   curveVertex(0, -10);    // Top point of the pear
   curveVertex(-3, -9);    // Right upper curve
-  curveVertex(-6, 0);     // Right middle curve
+  curveVertex(-8, 0);     // Right middle curve
   curveVertex(-8, 7);     // Right lower curve
   curveVertex(0, 12);     // Bottom point of the pear
   curveVertex(8, 7);      // Left lower curve
-  curveVertex(6, 0);      // Left middle curve
+  curveVertex(8, 0);      // Left middle curve
   curveVertex(3, -9);     // Left upper curve
   endShape(CLOSE);
 

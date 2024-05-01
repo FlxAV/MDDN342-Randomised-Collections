@@ -61,6 +61,7 @@ function setup () {
 
 function draw () {
   strokeWeight(0.2);
+ // randomSeed(2);
 
   let mode = faceSelector.value();
 
@@ -107,12 +108,28 @@ function draw () {
   }
 
   if (mode == 'My face') {
-    let shape = floor(random(3));
-  
-    let eyeR = 0;
-    let eyeL = 6;
 
-    let eyeSize1 = map(s1, 0, 100, 1, 3);
+
+    let shape = floor(random(3));
+    
+
+    let eyePosR = floor(map(s5, 0, 100, 0, 3.9));
+    let eyePosL = floor(map(s6, 0, 100, 0, 3.9));
+
+
+    //Given array of integers
+    let array1 = [1, 0, 8, 9];
+    let array2 = [4, 5, 6, 7];
+
+    // Generate a random index within the range of the array length
+    // let randomInt1 = floor(random(4));;
+    // let randomInt2 = floor(random(4));;
+    // Retrieve the random integer from the array
+    let eyeR = array1[eyePosR];
+    let eyeL = array2[eyePosL];
+    
+
+    let eyeSize1 = map(s1, 0, 100, 0, 3);
     let eyeSize2 = map(s2, 0, 100, 1, 3);
 
     let mouthWidth1 = map(s3, 0, 100, 0.5, 2);

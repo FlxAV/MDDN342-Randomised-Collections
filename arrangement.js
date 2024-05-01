@@ -39,9 +39,9 @@ function mouseClicked() {
 
 
 function draw () {
-  if(millis() > lastSwapTime + millisPerSwap) {
-    changeRandomSeed();
-  }
+  // if(millis() > lastSwapTime + millisPerSwap) {
+  //   changeRandomSeed();
+  // }
 
   // reset the random number generator each time draw is called
   randomSeed(curRandomSeed);
@@ -51,13 +51,13 @@ function draw () {
   //noStroke();
   
   //Draw thre Leafy background
-  let leafSpacing = 40; // Adjust spacing between leaves as needed
+  let leafSpacing = 40; // Adjust spacing between leaves
   for(let i = 0; i <= width; i += leafSpacing) {
     for(let j = 0; j <= height; j += leafSpacing) {
       push(); 
-      translate(i, j); // Move to the position where the leaf will be drawn
+      translate(i, j); 
       rotate(random(360)); // Rotate the leaf randomly
-      leaf(0, 0); // Call the leaf function at the local origin
+      leaf(0, 0); // Call the leaf function 
       pop(); 
     }
   }
@@ -80,50 +80,6 @@ function draw () {
       }
     }
   
-
-  // // draw a 7x4 grid of faces
-  // let w = canvasWidth / 7;
-  // let h = canvasHeight / 4;
-  // for(let i=0; i<4; i++) {
-  //   for(let j=0; j<7; j++) {
-  //     let y = h/2 + h*i;
-  //     let x = w/2 + w*j;
-     
-  //       push();
-  //       translate(x, y);
-  //       scale(w/25, h/25);
-        
-  //       //orangeAlienFace(tilt_value, eye_value, mouth_value);
-
-  //       let shape = floor(random(3));
-
-  //         // Given array of integers
-  //       let array1 = [1, 0, 8, 9];
-  //       let array2 = [4, 5, 6, 7];
-
-  //       // Generate a random index within the range of the array length
-  //       let randomInt1 = floor(random(4));;
-  //       let randomInt2 = floor(random(4));;
-  //       // Retrieve the random integer from the array
-  //       let eyeR = array1[randomInt1];
-  //       let eyeL = array2[randomInt2];
-
-  //       let eyeSize1 = random(1,3);
-  //       let eyeSize2 = random(1,4);
-
-  //       let mouthWidth1 = random(0.5,2);
-  //       let mouthWidth2 = random(0.8,2);
-
-
-  //       kodamoHead(shape, eyeR, eyeL, eyeSize1, eyeSize2, mouthWidth1, mouthWidth2); 
-
-  //       pop();
-
-      
-      
-  //   }
-  // }
-
 
 }
 
