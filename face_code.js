@@ -99,14 +99,17 @@ function kodamoHead(shape, eyeR, eyeL, eyeSize1, eyeSize2, mouthWidth1, mouthWid
   
   let a = 255;
   
-  let prob1 = floor(random(100));
-  let prob2 = floor(random(100));
-
+  let prob1 = floor(random(100)); //random probality for a pink Kodama
+  let prob2 = floor(random(100)); // random probability for a transparent Kodama
+  
+  // If this rolls assignes a random value to a (for transparentness)
   if(prob2<30){
     a = random(200, 255);
   }
   
+  //Creats a color variable
   let kodamaColor = [b, g, r, a];
+  //If this rolls, the Kodama will have a special and rare custom color (pink, aprox~ 1% chance)
   if(prob1 === 1){
     kodamaColor = [ 255, 204, 255, a];
   }
@@ -120,7 +123,8 @@ function kodamoHead(shape, eyeR, eyeL, eyeSize1, eyeSize2, mouthWidth1, mouthWid
 
   kodamaBody(kodamaColor);
 
-  // Clear the array to store new blob attributes  COMMENT OUT WHEN USING EDITOR
+  // Clear the array to store new blob attributes  
+  // COMMENT OUT WHEN USING EDITOR
   blobObj = [];
 
   // Modify the initial shape based on the value of the 'shape' parameter
@@ -188,8 +192,7 @@ let yCord1 = (blobObj[eyeR].y) - (blobObj[eyeR].y)/2;
 let xCord2 = (blobObj[eyeL].x) - (blobObj[eyeL].x)/2;
 let yCord2 = (blobObj[eyeL].y) - (blobObj[eyeL].y)/2;
 
-//console.log("X1: "+xCord1+" || Y1: "+ yCord1+" || X2: "+xCord2+" || Y2: "+yCord2);
-
+//Draw the eyes
 fill(0);
 noStroke();
 ellipse(xCord1, yCord1, eyeSize1); // Left eye
@@ -199,7 +202,7 @@ ellipse(xCord2, yCord2, eyeSize2); // Right eye
 
   // Draw smile
  
-
+  //Figure out which eye is lower (L or R)
   let lowerEyeCord;
   let lowerEyeSize;
   if(yCord1<yCord2){
@@ -211,7 +214,8 @@ ellipse(xCord2, yCord2, eyeSize2); // Right eye
   }
 
   //console.log("YCord1 : "+yCord1+" || YCord2 : "+yCord2 + " || Lowere Eye: "+lowerEyeCord);
-
+  
+  //Define the (usually) Lowest point on head
   let chinPoint = blobObj[3].y;
 
   let mouthWidth = lowerEyeSize * 2;

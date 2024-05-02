@@ -41,5 +41,23 @@ For the back ground I used a function that draws a leaf called Garden by thomm23
 
 ![BackGround](image-5.png)
 
-Anf thats the parameterised faces.
+So all the previously is more an explanation of the coding I did and the steps I took. I'll now try and talk a bit on why I did some decisions.
 
+So firstly I decided to kindof do this project without looking too closely at reference images. I had an idea of what they looked like in my head and I wanted to do those one. 
+So the Kodamas from the reference have pretty "normal" head shapes, where the shape stays relatively "head-like". In my mind Those heads were like random blobs, which is why the ones in my project have some really wacky head shapes, while in the movie "Princess Mononoke" their head shapes reamin fairly tame.
+
+Secondly the eye position, in the movie the eyes are again fairly un-irregular. So, that means that they have two eyes and a mouth in a fairly normal place on their faces. Some even have a small nose. I believed that their eyes could be a little more wacky, as in have them really high up on the face, one high one low, one to the left and one to the bottom right etc... This made for more obvious variety which I believe was in the spirit of the assignment which asked to creat a new set of faces everytime. In the image below is the Kodama from the movie:
+
+![Kodama](image-6.png)
+
+And then some of the Kodamas my function generated:
+
+![Kodama_Felix](image-7.png)
+
+For the Background I tried a few things that didn't work, including some random trees generating and noise particles wind thing. Both of these didn't really work and were a bit too complicated for something that is a background to the real project. So I found a function that draws a leaf by thomm238 and set out to try and created a leafy backdrop. In the movie the scene where we see them all together they are on top of trees, so it was quite fitting. I covered the background with those leafs making sure to add some randomness to the rotation of each one to create this tree top look.
+
+For the colour, in the movie they are all white and I liked that esthetic so I did the same. However having them all as white kinda hurt my eyes and made it look a bit messy. So, I added a bit of randomness to the colour, allowing the white to range from full white to egg-shell white. It's a subtle change but I believe it to be a necessary one.
+
+That same logic can be viewed with the leafy background I created. I didn't like that all the leafs were the same colour since it made the scene look very flat. So I added so colour variation. Now some of the leaves look a littled wilted or older bringing a little bit of realism. 
+
+One last point is that these Kodamas are spirits of the forest. So having some of them be slightly transparent seemed right. The majority will be opaque since thats the way they are usually, but there is a small chance that they get generated while being slightly transparent as though they were appearing or disappearing like a spirit.

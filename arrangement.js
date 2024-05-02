@@ -39,9 +39,10 @@ function mouseClicked() {
 
 
 function draw () {
-  // if(millis() > lastSwapTime + millisPerSwap) {
-  //   changeRandomSeed();
-  // }
+  //Timed Swap.
+  if(millis() > lastSwapTime + millisPerSwap) {
+    changeRandomSeed();
+  }
 
   // reset the random number generator each time draw is called
   randomSeed(curRandomSeed);
@@ -49,14 +50,29 @@ function draw () {
   // clear screen
   background(bg_color1);
   //noStroke();
-  
-  //Draw thre Leafy background
+ 
+  //DRAW THE BACK LAYER OF LEAVES
+  let leafSpacing1 = 35; // Adjust spacing between leaves
+  for(let i = 0; i <= width; i += leafSpacing1) {
+    for(let j = 0; j <= height; j += leafSpacing1) {
+      push(); 
+      translate(i, j); 
+      rotate(random(360)); // Rotate the leaf randomly
+      fill(random(0,60), random(50,135), random(0,70));
+      leaf(0, 0); // Call the leaf function 
+      pop(); 
+    }
+  }
+
+  //DRAW THE FRONT LAYER OF LEAVES
   let leafSpacing = 40; // Adjust spacing between leaves
+  //Draw thre Leafy background
   for(let i = 0; i <= width; i += leafSpacing) {
     for(let j = 0; j <= height; j += leafSpacing) {
       push(); 
       translate(i, j); 
       rotate(random(360)); // Rotate the leaf randomly
+      fill(random(85,155), random(185,215), random(85,115));
       leaf(0, 0); // Call the leaf function 
       pop(); 
     }
@@ -79,6 +95,8 @@ function draw () {
         }
       }
     }
+
+
   
 
 }
@@ -123,9 +141,9 @@ function drawHead(x, y) {
 
 //Background
 
+//Function by tom238 : https://editor.p5js.org/thomm238/sketches/SJunqRjx8
 function leaf(leafX, leafY) {
   //fill(120, 200, 100);
-  fill(random(85,155), random(185,215), random(85,115));
 
   arc(leafX, leafY, 30, 60, -90, 90);
   arc(leafX, leafY, 30, 60, 90, -90);
