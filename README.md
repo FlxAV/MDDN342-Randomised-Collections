@@ -25,6 +25,21 @@ Once those 10 points were seperated, I then select a random point from one of th
 
 Once that is done to both eyes, I now have two eyes that are always located withing the Kodama head, and the placement of the eye is randomised between four points each.
 
-Next challenge was the mouth which I just based all the variables off of the eye located lowest on the face. That way when the eye is lower down the mouth will remain beneath the two eyes and still look somehwat face like.
+![Eye Generating](image-4.png)
 
-Leaf Function : Garden by thomm238
+Next challenge was the mouth which I just based all the variables off of the eye located lowest on the face. That way when the eye is lower down the mouth will remain beneath the two eyes and still look somehwat face like. If the mouth ends up going past the chin, some logic just moves the mouth up a bit.
+
+This is all the code for generating parameratrised heads. Some of the randomness is done internally (inside the head function), such as the the blobbiness of the head shape, the colour, transparentness and the randomness of the mouth. The rest (eye position, eye size, type of head shape, size) are done externally, so the randomess is defined in the arrangement.js .
+
+For the arrangment of the faces on the canvas I wanted to try and creat a bit of a crow effect. So I itterate accross the canvas with some interval and call a noise function. I then use the noise function value, the crowdDensity and crowdScale values to determine weather a head will be generated at each itteration. This creates a sort of crowd effect with heads grouping up in some places and having empty space in some others.
+
+For visual esthetics I created a body function that just draws a body for each head. There are no changes to the bodys between different characters. 
+
+![Body](image-3.png)
+
+For the back ground I used a function that draws a leaf called Garden by thomm238. I then called the function accross the whole background with some randomised rotations and some colour variety to create a background that is visually pleasing while also refering to the original inspiration, the Kodama spirits. Which are forest spirits.
+
+![BackGround](image-5.png)
+
+Anf thats the parameterised faces.
+

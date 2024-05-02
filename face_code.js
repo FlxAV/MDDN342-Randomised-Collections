@@ -173,14 +173,14 @@ function kodamoHead(shape, eyeR, eyeL, eyeSize1, eyeSize2, mouthWidth1, mouthWid
   curveVertex(blobObj[2].x, blobObj[2].y);
   endShape(); // we finish adding points
 
-//to view the points on the blob
-  for(let i = 0; i<10;i++){
-  // ellipse(blobObj[i].x, blobObj[i].y, 1, 1);
-  }
 
- ellipse(blobObj[2].x, blobObj[2].y, 1, 1);
-  fill(255,0,0);
-  ellipse(blobObj[3].x, blobObj[3].y, 1, 1);
+//DEBUG draws the points on the circle
+  // for(let i = 0; i<10;i++){
+  //  ellipse(blobObj[i].x, blobObj[i].y, 1, 1);
+  // }
+  // fill(255,0,0);
+  // ellipse(blobObj[8].x, blobObj[8].y, 1, 1);
+  // ellipse(blobObj[5].x, blobObj[5].y, 1, 1);
 
 // Adjust the coordinates of the eyes to center them around (0, 0)
 let xCord1 = (blobObj[eyeR].x) - (blobObj[eyeR].x)/2;
