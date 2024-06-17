@@ -12,6 +12,8 @@ Initially, the project was inspired by the moon's phases and the idea of incorpo
 
 ![Moon idea](image.png)
 
+![Kodama Ref](image-1.png)
+
 ### Parametric Generation of Kodama Faces
 
 The primary challenge was to create randomized blob-like head shapes reminiscent of Kodama spirits. Using a circular base with controlled randomness, I developed a method to generate varied head shapes while maintaining visual coherence.
