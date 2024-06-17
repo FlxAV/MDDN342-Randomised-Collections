@@ -74,6 +74,10 @@ To view the project, follow these steps:
    - Clicking on the displayed images will regenerate a new group of faces with updated parameters and variations.
    - Note: Clicking on the editor button opens a development tool for face design. To use it effectively, certain lines in `face_code.js` need to be commented out/added (Line 122 and 128).
 
+## References
+
+Garden by  thomm238: [Garden Web Editor](https://editor.p5js.org/thomm238/sketches/SJunqRjx8)
+
 ## Additional Notes
 
 - **Development Environment:** Visual Studio Code with Live Server recommended for real-time updates.
