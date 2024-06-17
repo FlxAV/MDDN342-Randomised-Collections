@@ -70,7 +70,6 @@ To view the project, follow these steps:
 
 ## Additional Notes
 
-- **Assignment Details:** [Review Assignment Due Date](https://classroom.github.com/a/uYb6fuja)
 - **Development Environment:** Visual Studio Code with Live Server recommended for real-time updates.
 
 ---
