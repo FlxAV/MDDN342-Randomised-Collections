@@ -52,6 +52,10 @@ I chose to interpret the Kodamas with more whimsical and irregular head shapes c
 
 Adjustments in color variation and background details were made to prevent visual monotony and enhance overall aesthetic appeal. These enhancements aimed to create a visually engaging experience that resonates with the spirit of the original inspiration.
 
+Final look:
+
+![Kodama_Felix](image-7.png)
+
 ## Running the Project
 
 To view the project, follow these steps:
