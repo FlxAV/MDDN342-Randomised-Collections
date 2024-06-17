@@ -78,6 +78,8 @@ To view the project, follow these steps:
 
 Garden by  thomm238: [Garden Web Editor](https://editor.p5js.org/thomm238/sketches/SJunqRjx8)
 
+Princess Mononoke : Miyazaki, M. (1997). Princess Mononoke. Toho Co., Ltd., Miramax.
+
 ## Additional Notes
 
 - **Development Environment:** Visual Studio Code with Live Server recommended for real-time updates.
