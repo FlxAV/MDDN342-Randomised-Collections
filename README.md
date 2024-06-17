@@ -52,18 +52,21 @@ Adjustments in color variation and background details were made to prevent visua
 
 ## Running the Project
 
-To view and interact with "Randomised Collections," follow these steps:
+To view the project, follow these steps:
 
 1. **Setup:**
-   - Clone the repository to your local machine.
+  - Clone the repository to your local machine.
+  - Open the project folder in Visual Studio Code.
 
 2. **Run the Project:**
-   - Navigate to the project directory.
-   - Open `index.html` in your preferred web browser or use a tool like Live Server for real-time updates.
+  - Navigate to the index.html file.
+  - Right-click on the index.html file and select "Open with Live Server" (if you have the Live Server extension installed) or open it directly in your browser.
+  - The project should open in a new browser tab, displaying the interactive animation. 
 
-3. **Interact:**
+ 3. **Interact:**
    - Once the project is running, explore the generated Kodama faces.
-   - Use the provided buttons or controls to interact with and customize the display as desired.
+   - Clicking on the displayed images will regenerate a new group of faces with updated parameters and variations.
+   - Note: Clicking on the editor button opens a development tool for face design. To use it effectively, certain lines in `face_code.js` need to be commented out/added (Line 122 and 128).
 
 ## Additional Notes
 
